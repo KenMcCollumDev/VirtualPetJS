@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Virtual Pet Parody</title>
+		<script src="jquery.js"></script>		
+		<script src="Tamagotchi.js"></script>	
+		<link rel="stylesheet" type="text/css" href="style.css"> 
+ 
+    </head>
+
+	<body>
+		<img src="tamagotchi.bmp" > 
+		<table id="DashBoard">
+		 <caption><b>Tamagotchi Stats</b></caption>
+		  <tr>
+			<th id="hungerHeader" >Hunger Level: </th> 
+			<th id="hungerDisplay" > 0 </th>
+			<th id="feedButton" class="button" 0> Feed </th>
+		  <tr>
+			<th id="fatigueHeader" >Fatigue Level: </th> 
+			<th id="hungerDisplay" > 0 </th>
+			<th id="sleepButton" class="button" 0> Put to Bed </th>
+		  <tr>
+			<th id="happinessHeader" >Happiness Level: </th> 
+			<th id="hungerDisplay" > 0 </th>
+			<th id="playButton" class="button" 0> Play With</th>
+		  <tr>
+			<th id="educationHeader" >Weight Level: </th> 
+			<th id="hungerDisplay" > 0 </th>
+			<th id="WorkButton" class="button" 0> Make Work</th>
+		  <tr>
+			<th id="resultMessage" > </th> 
+		  </tr>
+
+		</table> 
+ 		
+		<button id= "newGame" >NewGame</button>
+		<button id= "saveGame" >Save Game</button>
+		<button id= "loadGame" >Load Game</button>
+		<button id= "cheat" >Cheat :)</button>
+
+
+	<script>
+		/*	This Space Intentionally Left Blank	*/
+$('#feedButton').on('click', function(e) {
+					alert("Fed + Tamagotchi.HUNGERLEVEL");
+					Tamagotchi.feed();
+				});
+		/*	This Space Intentionally Left Blank	*/
+$('#sleepButton').on('click', function(e) {
+					alert("Sleep + Tamagotchi.fatigueLEVEL");
+				});
+		/*	This Space Intentionally Left Blank	*/
+$('#feedButton').on('click', function(e) {
+					alert("Fed + Tamagotchi.HUNGERLEVEL");
+				});
+		/*	This Space Intentionally Left Blank	*/
+$('#feedButton').on('click', function(e) {
+					alert("Fed + Tamagotchi.HUNGERLEVEL");
+				});
+	</script>
+	</body>
+</html>
+
+
+
+
+
+
