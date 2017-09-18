@@ -5,7 +5,7 @@
 		td {
 			border: 1px solid black;
 			table-layout: fixed;
-			width: 125px;
+			width: 200px;
 			height: 25px;
 		    font-size: 16px;
 		}
@@ -14,5 +14,8 @@
 			{
 			font-size: 16px;
 		}
-		
+		#showResults
+			{
+			height: 25px;
+		}
 

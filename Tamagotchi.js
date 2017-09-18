@@ -91,7 +91,7 @@ Different care will fix some of the problems, but indirectly create others.
 		Tamagotchi.obesity = Tamagotchi.weight / Tamagotchi.height;  //BMI: Units KG/M
 	}//closes function grow
 
-	function cheat(){
+	this.cheat = function(){
 		Tamagotchi.happiness = Tamagotchi.happiness + Math.floor(10 + Math.random()*5); //Units: none
 		Tamagotchi.torment = Tamagotchi.torment - Math.floor(5 - Math.random()*5); //Units: none
 		Tamagotchi.countOfInteractions++;
@@ -102,37 +102,44 @@ Different care will fix some of the problems, but indirectly create others.
 	}
 
 	this.feed = function(){
-	var messageFeed = "Im Hungry. I like steak, beer, pizza and cake";
-	var methodFeed = "liver + brusselsprouts";
+	var messageFeed = "Im Hungry. I like steak, beer, pizza and cake.  Whats for dinner?";
+	var methodFeed = "slop";
+	methodFeed = prompt(messageFeed, methodFeed );
+	console.log(methodFeed);
 	var resultMessage = "";
 		switch (methodFeed.toLowerCase()){
 		    case (methodFeed = "steak"):
-		        Tamagotchi.hunger = Tamagotchi.hunger - 3 + 3*Math.random();
-		        Tamagotchi.weight = Tamagotchi.weight + 3 + 3*Math.random();
+		        Tamagotchi.hunger = Tamagotchi.hunger - (3 + 3*Math.random());
+		        Tamagotchi.weight = Tamagotchi.weight + (3 + 3*Math.random());
 		        resultMessage=("burp! thanks. I love " + methodFeed + ".");
 		        break;
 		    case (methodFeed = "beer"):
-		        Tamagotchi.hunger = Tamagotchi.hunger - 1 + Math.random();
+		        Tamagotchi.hunger = Tamagotchi.hunger - (1 + Math.random());
 		        Tamagotchi.weight = Tamagotchi.weight + 2 + 2*Math.random();
 		        resultMessage=("burp! thanks. I love " + methodFeed + ".");
 		        break;
 		    case (methodFeed = "pizza"):
-		        Tamagotchi.hunger = Tamagotchi.hunger - 2 + Math.random();
+		        Tamagotchi.hunger = Tamagotchi.hunger - (2 + Math.random());
 		        Tamagotchi.weight = Tamagotchi.weight + 2 + 2*Math.random();
 		        resultMessage=("burp! thanks. I love " + methodFeed + ".");
 		        break;
-		    case (methodFeed = "steak"):
-		        Tamagotchi.hunger = Tamagotchi.hunger - 1 + Math.random();
+		    case (methodFeed = "cake"):
+		        Tamagotchi.hunger = Tamagotchi.hunger - (1 + Math.random());
 		        Tamagotchi.weight = Tamagotchi.weight + 2 + 2*Math.random();
 		        resultMessage=("burp! thanks. I love " + methodFeed + ".");
 		        break;
 		    default:
-		        Tamagotchi.hunger = Tamagotchi.hunger + 3 + Math.random();
+		        Tamagotchi.hunger = Tamagotchi.hunger + Math.random();
 		        Tamagotchi.fatigue = Tamagotchi.fatigue + Math.random();
 		        Tamagotchi.happiness = Tamagotchi.happiness - Math.random();
-		        resultMessage=("NOOOO!! Not pig feet and brussel sprouts!" + "RE-E-ETTT-TCHHHHHH!  BARRFF! Splat! (etc)" + Tamagotchi.happiness); console.log(resultMessage);
+		        resultMessage=("NOOOO!! Not pig feet and brussel sprouts!" + "RE-E-ETTT-TCHHHHHH!  BARRFF! Splat! (etc)");
 		        break;
 		  }
+		document.getElementById("showResults").innerHTML=resultMessage;
+		document.getElementById("hungerDisplay").innerHTML=Tamagotchi.hunger;
+		document.getElementById("weightDisplay").innerHTML=Tamagotchi.weight;
+		//this works			
+		//document.getElementById("showResults").innerHTML = "Paragraph changed!"
 		Tamagotchi.countOfInteractions++;
 	}//closes function feed
 
@@ -151,49 +158,54 @@ Different care will fix some of the problems, but indirectly create others.
 		        resultMessage=("You mount the severed head of your tamagotchi on a stake in your front yard as a warning to all your other tamagotchi to work harder.  The city inspector mails you a citation for zoning infraction regarding permissible height of impaled heads in the front yard per city code 123.456-a.78... cue to spooky vaudeville music here...");
 		        break;
 		    default:
-		        resultMessage=("You use your advanced skills in necromancy to raise your tamagotchi's corpse.  Your undead Tamagotchi rampages through the neighborhood and eventually inspires a Japanese horror movie series"); 
+		        resultMessage=("You use your advanced skills in necromancy to raise your tamagotchi's corpse.  Your undead Tamagotchi lurches about the neighborhood and eventually inspires a Japanese horror movie series"); 
 		        break;
 		}
 	}//closes function
 
-	function playWith(){
+	this.playWith = function(){
 		var messagePlay = ("Please play with me.  I like basketball, swimming, skating, chess and ancient heavily pixelated videogames");
-		console.log(messagePlay);
 		var methodPlay = "Tickle"; //@user input
+		methodPlay = prompt(messagePlay, methodPlay );
+		console.log(messagePlay);
+		console.log(Tamagotchi.happiness);
 		var resultMessage = "";
 		switch (methodPlay.toLowerCase()){
 		    case (methodPlay = "basketball"):
 		        Tamagotchi.fatigue = Tamagotchi.fatigue + 1 + 4*Math.random();
 		        Tamagotchi.happiness = Tamagotchi.happiness + 2 + 3*Math.random();
-		        resultMessage=("Yay! I love + methodPlay" + " " + Tamagotchi.happiness); console.log(resultMessage);
+		        resultMessage=("Yay! I love " + methodPlay); console.log(resultMessage);
 		        break;
 		    case (methodPlay = "swimming"):
 		        Tamagotchi.fatigue = Tamagotchi.fatigue + 1 + 3*Math.random();
 		        Tamagotchi.happiness = Tamagotchi.happiness + 1 + 3*Math.random();
-		        resultMessage=("Yay! I love + methodPlay" + " " + Tamagotchi.happiness); console.log(resultMessage);
+		        resultMessage=("Yay! I love " + methodPlay); console.log(resultMessage);
 		        break;
 		    case (methodPlay = "skating"):
 		        Tamagotchi.fatigue = Tamagotchi.fatigue + 1 + 3*Math.random();
 		        Tamagotchi.happiness = Tamagotchi.happiness + 1 + 3*Math.random();
-		        resultMessage=("Yay! I love + methodPlay"  + " " + Tamagotchi.happiness); console.log(resultMessage);
+		        resultMessage=("Yay! I love " + methodPlay); console.log(resultMessage);
 		        break;
 		    case (methodPlay = "chess"):
 		        Tamagotchi.fatigue = Tamagotchi.fatigue + 2;
 		        Tamagotchi.happiness = Tamagotchi.happiness + 2;
-		        resultMessage=("Yay! I love + methodPlay"  + " " + Tamagotchi.happiness); console.log(resultMessage);
+		        resultMessage=("Yay! I love " + methodPlay); console.log(resultMessage);
 		        break;
 		    case (methodPlay = "ancient heavily pixelated abandonware games"):
 		        Tamagotchi.fatigue = Tamagotchi.fatigue + 2;
 		        Tamagotchi.happiness = Tamagotchi.happiness + 2;
-		        resultMessage=("Yay! I love + methodPlay" + " " + Tamagotchi.happiness); console.log(resultMessage);
+		        resultMessage=("Yay! I love " + methodPlay); console.log(resultMessage);
 		        break;
 		    default:
 		        Tamagotchi.fatigue = Tamagotchi.fatigue + Math.random();
 		        Tamagotchi.happiness = Tamagotchi.happiness - Math.random();
-		        resultMessage=("NOOOO!! Dont tickle me! mmph giggle hoo hoo!" + " " + Tamagotchi.happiness); console.log(resultMessage);
+		        resultMessage=("NOOOO!! Dont tickle me! mmph giggle hoo hoo!"); console.log(resultMessage);
 		        break;
 		}
-		    Tamagotchi.countOfInteractions++;
+		document.getElementById("showResults").innerHTML=resultMessage;
+		document.getElementById("fatigueDisplay").innerHTML=Tamagotchi.fatigue;
+		document.getElementById("happinessDisplay").innerHTML=Tamagotchi.happiness;
+		Tamagotchi.countOfInteractions++;
 	}//closes function playWith
 
 	function passageOfTime(){
@@ -257,30 +269,22 @@ Different care will fix some of the problems, but indirectly create others.
 	}
 }//closes constructor makeTamagotchi
 
+var Tamagotchi = new makeTamagotchi(prompt("Please enter your name", "Gizmo the Mogwai"));
+//resultMessage=("my name is: " + Tamagotchi.name + " and I am an evil pet"); 
+//resultMessage=("my name is: " + this.name + " and I am an evil pet"); 
+//resultMessage=("my name is: " + name + " and I am an evil pet"); 
+console.log("this: " + this);
 
 
-
-
-
-
-
-
-
-
-
-
-
-var Tamagotchi = new makeTamagotchi("Gizmo the Mogwai");
-
-entropy();
-grow();
-playWith();
-feed();
-Tamagotchi.fatgiue = 90;
-console.log("Tamagotchis torment " + Tamagotchi.torment);
-Tamagotchi.torment = 10;
-Tamagotchi.tormentLevel;
-cheat;
+//entropy();
+//grow();
+//playWith();
+//feed();
+//Tamagotchi.fatgiue = 90;
+//console.log("Tamagotchis torment " + Tamagotchi.torment);
+//Tamagotchi.torment = 10;
+//Tamagotchi.tormentLevel;
+//cheat;
 //rubTummy();
 
 

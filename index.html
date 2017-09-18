@@ -12,25 +12,29 @@
 	<body>
 		<img src="tamagotchi.bmp" > 
 		<table id="DashBoard">
-		 <caption><b>Tamagotchi Stats</b></caption>
+		 <caption><b>TAMAGOTCHI STATS</b></caption>
 		  <tr>
 			<th id="hungerHeader" >Hunger Level: </th> 
 			<th id="hungerDisplay" > 0 </th>
 			<th id="feedButton" class="button" 0> Feed </th>
 		  <tr>
 			<th id="fatigueHeader" >Fatigue Level: </th> 
-			<th id="hungerDisplay" > 0 </th>
+			<th id="fatigueDisplay" > 0 </th>
 			<th id="sleepButton" class="button" 0> Put to Bed </th>
 		  <tr>
 			<th id="happinessHeader" >Happiness Level: </th> 
-			<th id="hungerDisplay" > 0 </th>
+			<th id="happinessDisplay" > 0 </th>
 			<th id="playButton" class="button" 0> Play With</th>
 		  <tr>
-			<th id="educationHeader" >Weight Level: </th> 
-			<th id="hungerDisplay" > 0 </th>
-			<th id="WorkButton" class="button" 0> Make Work</th>
+			<th id="weightHeader" >Weight Level: </th> 
+			<th id="weightDisplay" > 0 </th>
+			<th id="workButton" class="button" 0> Make Work </th>
 		  <tr>
-			<th id="resultMessage" > </th> 
+			<th id="tormentHeader" >Torment Level: </th> 
+			<th id="tormentDisplay" > 0 </th>
+			<th id="disciplineButton" class="button" 0> Discipline </th>
+		  <tr>
+			<th colspan="3" td height="1000" id="showResults" > </th> 
 		  </tr>
 
 		</table> 
@@ -38,26 +42,36 @@
 		<button id= "newGame" >NewGame</button>
 		<button id= "saveGame" >Save Game</button>
 		<button id= "loadGame" >Load Game</button>
-		<button id= "cheat" >Cheat :)</button>
+		<button id= "cheatButton" >Cheat :)</button>
 
 
 	<script>
 		/*	This Space Intentionally Left Blank	*/
 $('#feedButton').on('click', function(e) {
-					alert("Fed + Tamagotchi.HUNGERLEVEL");
 					Tamagotchi.feed();
 				});
 		/*	This Space Intentionally Left Blank	*/
-$('#sleepButton').on('click', function(e) {
-					alert("Sleep + Tamagotchi.fatigueLEVEL");
+$('#sleepButton').on('click', function(f) {
+					resultMessage = "You send your Tamagotchi to the dorms, where he tries to get a few hours of shut eye before you send him back to work.";
+					Tamagotchi.happiness = Tamagotchi.fatigue - 2 - 3*Math.random();
+					document.getElementById("fatigueDisplay").innerHTML=Tamagotchi.fatigue;
+					document.getElementById("showResults").innerHTML=resultMessage;
 				});
 		/*	This Space Intentionally Left Blank	*/
-$('#feedButton').on('click', function(e) {
-					alert("Fed + Tamagotchi.HUNGERLEVEL");
+$('#playButton').on('click', function(g) {
+					Tamagotchi.playWith();
 				});
 		/*	This Space Intentionally Left Blank	*/
-$('#feedButton').on('click', function(e) {
-					alert("Fed + Tamagotchi.HUNGERLEVEL");
+$('#workButton').on('click', function(h) {
+					resultMessage = "You send your Tamagotchi into the mines and mills to toil endless hours in grueling conditions...";
+					Tamagotchi.happiness = Tamagotchi.happiness - 2 - 3*Math.random();
+					document.getElementById("happinessDisplay").innerHTML=Tamagotchi.happiness;
+					document.getElementById("showResults").innerHTML=resultMessage;
+					//alert("You send your Tamagotchi into the mines and mills to toil endless hours in grueling conditions...");
+		/*	This Space Intentionally Left Blank	*/
+$('#cheatButton').on('click', function(g) {
+					Tamagotchi.cheat();
+				});
 				});
 	</script>
 	</body>
