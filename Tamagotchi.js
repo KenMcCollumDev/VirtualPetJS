@@ -270,10 +270,9 @@ Different care will fix some of the problems, but indirectly create others.
 }//closes constructor makeTamagotchi
 
 var Tamagotchi = new makeTamagotchi(prompt("Please enter your name", "Gizmo the Mogwai"));
-//resultMessage=("my name is: " + Tamagotchi.name + " and I am an evil pet"); 
-//resultMessage=("my name is: " + this.name + " and I am an evil pet"); 
-//resultMessage=("my name is: " + name + " and I am an evil pet"); 
-console.log("this: " + this);
+$(document).ready(function(){
+   document.getElementById("showResults").innerHTML="Congratulations on purchasing a new Tamagotchi egg.  Now that I'm hatched, my name is " + Tamagotchi.name + ".  Everything I do will make you think I'm happy and healthy but there is entropy and eventually I will develop problems after you have invested much attention. Once you grow attached to my cuteness, I'll age, have problems and diseases, grow to hate you and die. I'm a Tamagotchi that makes little children cry :=(";
+    });
 
 
 //entropy();
