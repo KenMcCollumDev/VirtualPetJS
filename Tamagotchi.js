@@ -10,6 +10,7 @@ Different combinations of stats will produce different problems.
 Different care will fix some of the problems, but indirectly create others.
 */
 	this.name = name;
+	var resultMessage = "";
 	this.hunger = 60;
 /*Variables xyzLevel map the numeric variable value to a relevant string for the user*/
 
@@ -25,9 +26,9 @@ Different care will fix some of the problems, but indirectly create others.
     120: "your exhausted tamagotchi collapses and begs you 'no more slave labor... set me free,' before dying.  GAME OVER "
     }
 	this.torment = 0;              // DEPENDENT: increases with the other problems; other problems increase with i too.t
-    this.tormentLevel = {
+    this.TORMENTLEVEL = {
     0: "Your tamagotchi attains nirvana (absence of suffering).  GAME OVER you cheater.",
-    20: "Your tamagotchi loves you like a happy kitten", 
+    20: "Your tamagotchi loves you like a happy kittycat", 
     40: "your tamagotchi follows you everywhere like a puppy ",
     60: "your tamagotchi misses you when you're gone  ",
     80: "your tamagotchi hides from you",
@@ -47,7 +48,7 @@ Different care will fix some of the problems, but indirectly create others.
     var weightRounded = 20 * Math.ceil(this.hunger/20);
     this.weight = 4;               // DEPENDENT on hunger, DOB, height:
     this.WEIGHTLEVEL = {
-        0:  "your severely malnourished tamagotchi is taken away by you county's Tamagotchi Protective Services and placed in a better home. GAME OVER.",
+        0:  "your severely malnourished tamagotchi is taken away by your county's Tamagotchi Protective Services and placed in a better home. GAME OVER.",
         20: "your emaciated tamagotchi is mistaken for a heroin addict",
         40: "your petite tamgotchi is offered a modelling job ",
         60: "your fit tamagotchi is content",
@@ -57,7 +58,7 @@ Different care will fix some of the problems, but indirectly create others.
     }
     var happinessRounded = 20 * Math.ceil(this.happiness/20);
 	this.happiness = 50;           // DEPENDENT depressed, bothered, content, happy, pollyana= obnoxious
-    this.happiness = {
+    this.HAPPINESSLEVEL = {
     0: "your despondent tamagotchi shoots you and then itself. GAME OVER",
     20: "your depressed tamagotchi refuses to get out of bed.",
     40: "your dejected tamagotchi experiments with drugs and prostitutes",
@@ -93,8 +94,12 @@ Different care will fix some of the problems, but indirectly create others.
 
 	this.cheat = function(){
 		Tamagotchi.happiness = Tamagotchi.happiness + Math.floor(10 + Math.random()*5); //Units: none
-		Tamagotchi.torment = Tamagotchi.torment - Math.floor(5 - Math.random()*5); //Units: none
+		Tamagotchi.torment = Tamagotchi.torment - Math.floor(5 + Math.random()*5); //Units: none
 		Tamagotchi.countOfInteractions++;
+		resultMessage=("You really do love me...");
+		document.getElementById("showResults").innerHTML=resultMessage;
+		document.getElementById("happinessDisplay").innerHTML=Tamagotchi.happiness;
+		document.getElementById("tormentDisplay").innerHTML=Tamagotchi.torment;
 	}
 
 	function mainApp(){
@@ -106,7 +111,7 @@ Different care will fix some of the problems, but indirectly create others.
 	var methodFeed = "slop";
 	methodFeed = prompt(messageFeed, methodFeed );
 	console.log(methodFeed);
-	var resultMessage = "";
+	resultMessage = "";
 		switch (methodFeed.toLowerCase()){
 		    case (methodFeed = "steak"):
 		        Tamagotchi.hunger = Tamagotchi.hunger - (3 + 3*Math.random());
@@ -137,11 +142,50 @@ Different care will fix some of the problems, but indirectly create others.
 		  }
 		document.getElementById("showResults").innerHTML=resultMessage;
 		document.getElementById("hungerDisplay").innerHTML=Tamagotchi.hunger;
+		alert("Tamagotchi.hunger: " + Tamagotchi.hunger + " Tamagotchi.HUNGERLEVEL: " + Tamagotchi.HUNGERLEVEL);
+//		document.getElementById("hungerDisplay").innerHTML=Tamagotchi.HUNGERLEVEL;
 		document.getElementById("weightDisplay").innerHTML=Tamagotchi.weight;
+		Tamagotchi.countOfInteractions++;
+	}//closes function feed
+//here
+/*
+	this.discipline = function(){
+	var messageFeed = "Your Tamagotchi has joined other Tamagotchi in a worker's revolt.  How will you handle this?";
+	var methodFeed = "electric chair";
+	methodFeed = prompt(messageFeed, methodFeed );
+	console.log(methodFeed);
+	resultMessage = "";
+		switch (methodFeed.toLowerCase()){
+		    case (methodFeed = "stocks"):
+		        Tamagotchi.happiness = Tamagotchi.happiness - (3 + 3*Math.random());
+		        Tamagotchi.torment = Tamagotchi.torment + (3 + 3*Math.random());
+		        resultMessage=("burp! thanks. I love " + methodFeed + ".");
+		        break;
+		    case (methodFeed = "flogging"):
+		        Tamagotchi.happiness = Tamagotchi.happiness - (3 + 3*Math.random());
+		        Tamagotchi.torment = Tamagotchi.torment + (4 + 3*Math.random());
+		        break;
+		    case (methodFeed = "branding"):
+ 		        Tamagotchi.happiness = Tamagotchi.happiness - (3 + 3*Math.random());
+		        Tamagotchi.torment = Tamagotchi.torment + 5 + 3*Math.random());
+		        break;
+		    default:
+		        Tamagotchi.happiness = Tamagotchi.happiness - (1000 + 3*Math.random());
+		        Tamagotchi.torment = Tamagotchi.torment + (1000 + 3*Math.random());
+		        break;
+		  }
+		document.getElementById("showResults").innerHTML=resultMessage;
+		document.getElementById("tormentDisplay").innerHTML=Tamagotchi.torment;
+		document.getElementById("happinessDisplay").innerHTML=Tamagotchi.happiness;
 		//this works			
 		//document.getElementById("showResults").innerHTML = "Paragraph changed!"
 		Tamagotchi.countOfInteractions++;
 	}//closes function feed
+*/
+	function aliveAndWell()
+	{
+		//if stats are bad, then die, else have a problem
+	}
 
 	function die(){
 		switch (methodPreserve.toLowerCase()){
@@ -169,7 +213,7 @@ Different care will fix some of the problems, but indirectly create others.
 		methodPlay = prompt(messagePlay, methodPlay );
 		console.log(messagePlay);
 		console.log(Tamagotchi.happiness);
-		var resultMessage = "";
+		resultMessage = "";
 		switch (methodPlay.toLowerCase()){
 		    case (methodPlay = "basketball"):
 		        Tamagotchi.fatigue = Tamagotchi.fatigue + 1 + 4*Math.random();
@@ -228,9 +272,9 @@ Different care will fix some of the problems, but indirectly create others.
 	//do stuff
 	}
 	*/
-	function purr(){
-		    console.log("I love you... purr ... purr...purr...purr...");
-		    console.log("and i will make this function actually do stuff too...some day");
+	this.purr = function (){
+		    resultMessage = ("I love you... purr ... purr...purr...purr...");
+		    document.getElementById("showResults").innerHTML=resultMessage;
 		}
 
 	/*

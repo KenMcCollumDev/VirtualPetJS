@@ -39,11 +39,11 @@
 
 		</table> 
  		
-		<button id= "newGame" >NewGame</button>
-		<button id= "saveGame" >Save Game</button>
-		<button id= "loadGame" >Load Game</button>
+		<button id= "newGameButton" >NewGame</button>
+		<button id= "saveGameButton" >Save Game</button>
+		<button id= "loadGameButton" >Load Game</button>
 		<button id= "cheatButton" >Cheat :)</button>
-
+		<button id= "purrButton" >Purr :)</button>
 
 	<script>
 		/*	This Space Intentionally Left Blank	*/
@@ -51,6 +51,7 @@ $('#feedButton').on('click', function(e) {
 					Tamagotchi.feed();
 				});
 		/*	This Space Intentionally Left Blank	*/
+
 $('#sleepButton').on('click', function(f) {
 					resultMessage = "You send your Tamagotchi to the dorms, where he tries to get a few hours of shut eye before you send him back to work.";
 					Tamagotchi.happiness = Tamagotchi.fatigue - 2 - 3*Math.random();
@@ -58,21 +59,43 @@ $('#sleepButton').on('click', function(f) {
 					document.getElementById("showResults").innerHTML=resultMessage;
 				});
 		/*	This Space Intentionally Left Blank	*/
+
 $('#playButton').on('click', function(g) {
 					Tamagotchi.playWith();
 				});
 		/*	This Space Intentionally Left Blank	*/
+
 $('#workButton').on('click', function(h) {
 					resultMessage = "You send your Tamagotchi into the mines and mills to toil endless hours in grueling conditions...";
-					Tamagotchi.happiness = Tamagotchi.happiness - 2 - 3*Math.random();
+					Tamagotchi.happiness = (Tamagotchi.happiness - 2 - 3 * Math.random());
+			        Tamagotchi.weight = Tamagotchi.weight - ( 1 + 2 * Math.random());
 					document.getElementById("happinessDisplay").innerHTML=Tamagotchi.happiness;
+					document.getElementById("weightDisplay").innerHTML=Tamagotchi.weight;
 					document.getElementById("showResults").innerHTML=resultMessage;
 					//alert("You send your Tamagotchi into the mines and mills to toil endless hours in grueling conditions...");
 		/*	This Space Intentionally Left Blank	*/
-$('#cheatButton').on('click', function(g) {
+				});
+
+$('#newGameButton').on('click', function(j) {
+					window.location.reload();
+				});
+
+$('#saveGameButton').on('click', function(j) {
+					alert("to do: learn how to write to the filesystem")
+				});
+
+$('#loadGameButton').on('click', function(j) {
+					alert("to do: learn how to read from the filesystem")
+				});
+
+$('#cheatButton').on('click', function(i) {
 					Tamagotchi.cheat();
 				});
+
+$('#purrButton').on('click', function(j) {
+					Tamagotchi.purr();
 				});
+
 	</script>
 	</body>
 </html>
