@@ -40,8 +40,8 @@
 		</table> 
  		
 		<button id= "newGameButton" >NewGame</button>
-		<button id= "saveGameButton" >Save Game</button>
-		<button id= "loadGameButton" >Load Game</button>
+	<!--	<button id= "saveGameButton" >Save Game</button>	-->
+	<!--	<button id= "loadGameButton" >Load Game</button>	-->
 		<button id= "cheatButton" >Cheat :)</button>
 		<button id= "purrButton" >Purr :)</button>
 
@@ -49,31 +49,28 @@
 		/*	This Space Intentionally Left Blank	*/
 $('#feedButton').on('click', function(e) {
 					Tamagotchi.feed();
+					Tamagotchi.everyClick();
 				});
-		/*	This Space Intentionally Left Blank	*/
 
 $('#sleepButton').on('click', function(f) {
-					resultMessage = "You send your Tamagotchi to the dorms, where he tries to get a few hours of shut eye before you send him back to work.";
-					Tamagotchi.happiness = Tamagotchi.fatigue - 2 - 3*Math.random();
-					document.getElementById("fatigueDisplay").innerHTML=Tamagotchi.fatigue;
-					document.getElementById("showResults").innerHTML=resultMessage;
+					Tamagotchi.sleep();
+					Tamagotchi.everyClick();
 				});
-		/*	This Space Intentionally Left Blank	*/
 
 $('#playButton').on('click', function(g) {
 					Tamagotchi.playWith();
+					Tamagotchi.everyClick();
 				});
-		/*	This Space Intentionally Left Blank	*/
 
 $('#workButton').on('click', function(h) {
-					resultMessage = "You send your Tamagotchi into the mines and mills to toil endless hours in grueling conditions...";
-					Tamagotchi.happiness = (Tamagotchi.happiness - 2 - 3 * Math.random());
-			        Tamagotchi.weight = Tamagotchi.weight - ( 1 + 2 * Math.random());
-					document.getElementById("happinessDisplay").innerHTML=Tamagotchi.happiness;
-					document.getElementById("weightDisplay").innerHTML=Tamagotchi.weight;
-					document.getElementById("showResults").innerHTML=resultMessage;
-					//alert("You send your Tamagotchi into the mines and mills to toil endless hours in grueling conditions...");
-		/*	This Space Intentionally Left Blank	*/
+					Tamagotchi.work();
+					Tamagotchi.everyClick();
+				});
+
+$('#disciplineButton').on('click', function(i) {
+					//alert("discipline");
+					Tamagotchi.discipline();
+					Tamagotchi.everyClick();
 				});
 
 $('#newGameButton').on('click', function(j) {
@@ -90,10 +87,12 @@ $('#loadGameButton').on('click', function(j) {
 
 $('#cheatButton').on('click', function(i) {
 					Tamagotchi.cheat();
+					Tamagotchi.everyClick();
 				});
 
 $('#purrButton').on('click', function(j) {
 					Tamagotchi.purr();
+					Tamagotchi.everyClick();
 				});
 
 	</script>
